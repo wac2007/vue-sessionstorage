@@ -10,7 +10,7 @@ npm install --save vue-sessionstorage
 ```
 
 Put in your main.js
-```
+```javascript
 import VueSessionStorage from 'vue-sessionstorage'
 Vue.use(VueSessionStorage)
 ```
@@ -32,3 +32,21 @@ Remove the chosen key from session
 ### this.$session.clear(key)
 Clear all the current sessions
 
+
+## Example
+
+Let's suppose you are building a login system
+```javascript
+export default {
+    name: 'login',
+    methods: {
+        doLogin() {
+            axios.post('/login', {...}).then(response => {
+                let username = response.data.username;
+                this.$session.set('username', username); // Set the username in session Storage
+            });
+        }
+    } 
+    
+}
+```
